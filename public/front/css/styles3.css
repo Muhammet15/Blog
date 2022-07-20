@@ -1,0 +1,112 @@
+// INIT
+mainColor = #F0544F
+secondaryColor = #000
+bgColor = #FDF0D5
+
+body, html
+  overflow: hidden
+  background-color: bgColor
+  margin: 0
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif
+
+.f
+  position: fixed
+  top: 5px
+  right: 10px
+  font-family: 'Arial'
+  font-size: 0.8em
+  color: mainColor
+
+  a
+    color: secondaryColor
+
+// MIXINS
+center()
+  position absolute
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+
+_circle(size)
+  width size
+  height size
+  border-radius size
+
+// START
+projectSize = 20px;
+
+.Project
+  center()
+  width projectSize
+  height projectSize
+  cursor pointer
+
+.Project:hover
+
+  .imgMasked
+    clip-path circle(projectSize*5 at center)
+
+  .Project-hail
+    _circle(projectSize*10)
+
+  .Project-hail2
+    _circle(projectSize*10)
+    border projectSize*4 solid #FFF4E6
+    opacity 0
+
+  .Project-name
+    left 200%
+    opacity 1
+
+    &:before
+      width 100%
+
+
+
+.Project-hail
+  center()
+  background-color mainColor
+  _circle(projectSize*2)
+  transition: 0.5s
+  opacity 0.2
+
+.Project-hail2
+  center()
+  _circle(0)
+  transition: 5s
+  border projectSize+2px solid mainColor
+  border-radius projectSize
+  pointer-events: none;
+
+
+.imgMasked
+  center()
+  top: 50%;
+  height: projectSize * 10;
+  clip-path: circle(projectSize at center);
+  transition: 5s;
+  pointer-events: none;
+
+.Project-name
+  position absolute
+  max-width: 600px;
+  min-width 150px;
+  left: 0;
+  top: 150%;
+  pointer-events: none;
+  transition: 0.5s;
+  color secondaryColor
+  padding 3px 6px
+  z-index 2
+  opacity 0
+
+  &:before
+      content ''
+      width 0
+      height 100%
+      background-color mainColor
+      position absolute
+      top 0
+      left 0
+      transition 0.3s
+      z-index -1

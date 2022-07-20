@@ -1,0 +1,21 @@
+@extends ('front.Layouts.master')
+@section ('title','Anasayfa')
+
+@section ('content')
+        <!-- Main Content-->
+
+        @include ('front.widgets.categorywidgets')
+
+<div class="col-md-8 mx-auto">
+@include('front.widgets.articlelist')
+            
+        </div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+
+
+@endsection
